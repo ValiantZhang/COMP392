@@ -55,7 +55,7 @@ function init() {
     console.log("Added Plane Primitive to scene...");
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x000000 });
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -64,7 +64,7 @@ function init() {
     scene.add(sphere);
     //Add a Sphere to the Scene (body)
     sphereGeometry = new SphereGeometry(4, 20, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x000000 });
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -73,14 +73,13 @@ function init() {
     scene.add(sphere);
     console.log("Added Sphere Primitive to scene");
     //Add a Arms to the Scene
-    sphereGeometry = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x000000 });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = 0;
-    sphere.position.y = 10;
-    sphere.position.z = 2;
-    scene.add(sphere);
+    var geometry = new THREE.BoxGeometry( 10, 2, 1 );
+    var material = new THREE.MeshBasicMaterial( {color: 0x63F7CA} );
+    var cube = new THREE.Mesh( geometry, material );
+    cube.position.x = 0;
+    cube.posotion.y = 6;
+    cube.position.z = 2;
+    scene.add( cube );
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-40, 60, -10);
