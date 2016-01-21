@@ -73,13 +73,14 @@ function init() {
     scene.add(sphere);
     console.log("Added Sphere Primitive to scene");
     //Add a Arms to the Scene
-    var geometry = new THREE.BoxGeometry( 10, 2, 1 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x63F7CA} );
-    var cube = new THREE.Mesh( geometry, material );
+    cubeGeometry = new BoxGeometry(10, 4, 4);
+    cubeMaterial = new LambertMaterial({ color: 0xff0000 });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
     cube.position.x = 0;
-    cube.posotion.y = 6;
-    cube.position.z = 2;
-    scene.add( cube );
+    cube.position.y = 3;
+    cube.position.z = 0;
+    scene.add(cube);
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-40, 60, -10);
