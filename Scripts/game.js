@@ -73,7 +73,7 @@ function init() {
     scene.add(sphere);
     console.log("Added Sphere Primitive to scene");
     //Add a Arms to the Scene
-    cubeGeometry = new BoxGeometry(4, 20, 50);
+    cubeGeometry = new BoxGeometry(4, 5, 20);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
