@@ -116,7 +116,7 @@ function init() {
     scene.add(sphere);
     
     //Add Hat
-    sphereGeometry = new SphereGeometry(5, 0.1, 5);
+    sphereGeometry = new SphereGeometry(0.1, 0.1, 5);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
