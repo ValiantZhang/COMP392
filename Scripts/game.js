@@ -85,15 +85,16 @@ function init() {
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = 5;
+    cube.position.z = 6;
     scene.add(cube);
+    
     scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = -5;
+    cube.position.z = -6;
     scene.add(cube);
     //Add a Sphere to the Scene (Feet)
     sphereGeometry = new SphereGeometry(4, 2, 2);
@@ -104,6 +105,7 @@ function init() {
     sphere.position.y = 2;
     sphere.position.z = 2;
     scene.add(sphere);
+    
     sphereGeometry = new SphereGeometry(4, 2, 2);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
@@ -112,6 +114,17 @@ function init() {
     sphere.position.y = 2;
     sphere.position.z = -2;
     scene.add(sphere);
+    
+    //Add Hat
+    sphereGeometry = new SphereGeometry(5, 0, 5);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = 0;
+    sphere.position.y = 0;
+    sphere.position.z = 0;
+    scene.add(sphere);
+    
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-40, 60, -10);
