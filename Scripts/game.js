@@ -85,7 +85,7 @@ function init() {
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = 6;
+    cube.position.z = 6.5;
     scene.add(cube);
     
     scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
@@ -94,7 +94,7 @@ function init() {
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = -6;
+    cube.position.z = -6.5;
     scene.add(cube);
     //Add a Sphere to the Scene (Feet)
     sphereGeometry = new SphereGeometry(4, 2, 2);
