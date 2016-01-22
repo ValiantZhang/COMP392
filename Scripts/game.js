@@ -80,13 +80,21 @@ function init() {
     cube.position.x = 0;
     cube.position.y = 7;
     cube.position.z = 2;
-    scene.add(cube);cubeGeometry = new BoxGeometry(4, 10, 4);
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 2, 4);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 3;
     cube.position.z = 10;
+    scene.add(cube);
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 2, 2);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 3;
+    cube.position.z = -10;
     scene.add(cube);
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
