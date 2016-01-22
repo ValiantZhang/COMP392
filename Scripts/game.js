@@ -80,7 +80,7 @@ function init() {
     cube.position.x = 0;
     cube.position.y = 7;
     cube.position.z = 2;
-    scene.add(cube);cubeGeometry = new BoxGeometry(2, 2, 4);
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 7, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
@@ -88,7 +88,7 @@ function init() {
     cube.position.y = 3;
     cube.position.z = 10;
     scene.add(cube);
-    scene.add(cube);cubeGeometry = new BoxGeometry(2, 2, 2);
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 7, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
