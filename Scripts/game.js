@@ -126,7 +126,7 @@ function init() {
     document.body.appendChild(renderer.domElement);
     renderer.render(scene, camera);
     
-    var ambientLight = new AmbientLight( 0xFFFF34 );
+    var ambientLight = new AmbientLight( Math.random() * 0x20  );
     scene.add( ambientLight );
 }
 // Setup default renderer
