@@ -46,7 +46,7 @@ function init() {
     scene.add(axes);
     //Add a Plane to the Scene
     planeGeometry = new PlaneGeometry(60, 20);
-    planeMaterial = new LambertMaterial({ color: 0xFFFFFF });
+    planeMaterial = new LambertMaterial({ color: 0x80FF00 });
     plane = new Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
     plane.rotation.x = -0.5 * Math.PI;
@@ -141,7 +141,7 @@ function setupRenderer() {
 function setupCamera() {
     camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = -30;
-    camera.position.y = 40;
+    camera.position.y = 20;
     camera.position.z = 30;
     camera.lookAt(scene.position);
     console.log("Finished setting up Camera...");
