@@ -11,6 +11,7 @@ var LambertMaterial = THREE.MeshLambertMaterial;
 var MeshBasicMaterial = THREE.MeshBasicMaterial;
 var Mesh = THREE.Mesh;
 var SpotLight = THREE.SpotLight;
+var AmbientLight = THREE.ambientLight;
 var PointLight = THREE.PointLight;
 var Control = objects.Control;
 var GUI = dat.GUI;
@@ -30,6 +31,7 @@ var cube;
 var plane;
 var sphere;
 var spotLight;
+var ambientLight;
 var pointLight;
 var control;
 var gui;
@@ -123,6 +125,9 @@ function init() {
     scene.add(spotLight);
     document.body.appendChild(renderer.domElement);
     renderer.render(scene, camera);
+    
+    var ambientLight = new AmbientLight( 0x404040 );
+    scene.add( ambientLight );
 }
 // Setup default renderer
 function setupRenderer() {
