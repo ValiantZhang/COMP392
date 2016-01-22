@@ -110,20 +110,11 @@ function init() {
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
-    sphere.position.x = -2;
+    sphere.position.x = -1;
     sphere.position.y = 2;
     sphere.position.z = -2;
     scene.add(sphere);
     
-    //Add Hat
-    sphereGeometry = new SphereGeometry(0.1, 0.1, 5);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = 0;
-    sphere.position.y = 13;
-    sphere.position.z = 0;
-    scene.add(sphere);
     
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
