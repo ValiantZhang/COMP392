@@ -101,7 +101,7 @@ function init() {
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
-    sphere.position.x = -2;
+    sphere.position.x = -1;
     sphere.position.y = 2;
     sphere.position.z = 2;
     scene.add(sphere);
@@ -121,7 +121,6 @@ function init() {
     spotLight.position.set(-40, 60, -10);
     spotLight.castShadow = true;
     scene.add(spotLight);
-    console.log("Added Spot Light to Scene");
     document.body.appendChild(renderer.domElement);
     renderer.render(scene, camera);
 }
