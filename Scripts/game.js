@@ -121,7 +121,7 @@ function init() {
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
-    sphere.position.y = 0;
+    sphere.position.y = 11;
     sphere.position.z = 0;
     scene.add(sphere);
     
