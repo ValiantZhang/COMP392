@@ -85,7 +85,7 @@ function init() {
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = 7;
+    cube.position.z = 5;
     scene.add(cube);
     scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -93,14 +93,14 @@ function init() {
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
-    cube.position.z = -7;
+    cube.position.z = -5;
     scene.add(cube);
     //Add a Sphere to the Scene (Feet)
     sphereGeometry = new SphereGeometry(4, 2, 2);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
-    sphere.position.x = 0;
+    sphere.position.x = -2;
     sphere.position.y = 2;
     sphere.position.z = 2;
     scene.add(sphere);
@@ -108,7 +108,7 @@ function init() {
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
     sphere.castShadow = true;
-    sphere.position.x = 0;
+    sphere.position.x = -2;
     sphere.position.y = 2;
     sphere.position.z = -2;
     scene.add(sphere);
