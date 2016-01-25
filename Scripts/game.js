@@ -17,7 +17,6 @@ var Control = objects.Control;
 var GUI = dat.GUI;
 var Color = THREE.Color;
 var Vector3 = THREE.Vector3;
-var gameObject = objects.gameObject;
 var scene;
 var renderer;
 var camera;
@@ -37,8 +36,6 @@ var pointLight;
 var control;
 var gui;
 var stats;
-var step = 0;
-
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -134,54 +131,7 @@ function init() {
     var ambientLight = new AmbientLight( Math.random() * 0xFFFF34 );
     scene.add( ambientLight );
     
-    // add controls
-    gui = new GUI();
-    control = new Control(0.02, 60, 40);
-    addControl(control);
-    console.log("Added Control to scene...");
-    // Add framerate stats
-    addStatsObject();
-    console.log("Added Stats to scene...");
-    document.body.appendChild(renderer.domElement);
-    gameLoop(); // render the scene	
-    window.addEventListener('resize', onResize, false);
-}
-function onResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeed', 0, 0.5);
-    gui.add(controlObject, 'addCube');
-    gui.add(controlObject, 'removeCube');
-    gui.add(controlObject, 'outputObjects');
-    gui.add(controlObject, 'numberOfObjects').listen();
-}
-function addStatsObject() {
-    stats = new Stats();
-    stats.setMode(0);
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '0px';
-    stats.domElement.style.top = '0px';
-    document.body.appendChild(stats.domElement);
-}
-// Setup main game loop
-function gameLoop() {
-    stats.update();
-    // rotate the cubes around its axes
-    scene.traverse(function (threeObject) {
-        if (threeObject instanceof Mesh && threeObject != plane) {
-            threeObject.rotation.x += control.rotationSpeed;
-            threeObject.rotation.y += control.rotationSpeed;
-            threeObject.rotation.z += control.rotationSpeed;
-        }
-    });
-    // render using requestAnimationFrame
-    requestAnimationFrame(gameLoop);
-    // render the scene
-    renderer.render(scene, camera);
-}
+    
 }
 // Setup default renderer
 function setupRenderer() {
