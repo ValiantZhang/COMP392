@@ -34,6 +34,8 @@ var control;
 var gui;
 var stats;
 var step = 0;
+var blobbyBoy;
+
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -51,6 +53,10 @@ function init() {
     plane.rotation.x = -0.5 * Math.PI;
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
+    
+    //Add BlobbyBoy
+    scene.add(blobbyBoy);
+    
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
     scene.add(ambientLight);
