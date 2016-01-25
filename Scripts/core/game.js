@@ -5,6 +5,7 @@
 /*global objects*/
 /*global dat*/
 /*global Stats*/
+/*global requestAnimationFrame*/
 var Scene = THREE.Scene;
 var Renderer = THREE.WebGLRenderer;
 var PerspectiveCamera = THREE.PerspectiveCamera;
