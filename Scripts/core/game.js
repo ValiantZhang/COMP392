@@ -65,6 +65,8 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
+    blobbyBoy = new threeObject();
+    
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
