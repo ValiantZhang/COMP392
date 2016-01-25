@@ -36,7 +36,6 @@ var pointLight;
 var control;
 var gui;
 var stats;
-var randomPos = Math.random() * 1000 - 500;
 
 function init() {
     // Instantiate a new Scene object
@@ -58,72 +57,7 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
-    for ( var i = 0; i < 10; i ++ ) {
-
-	//Add a Sphere to the Scene (head)
-    sphereGeometry = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = 0 + randomPos;
-    sphere.position.y = 10;
-    sphere.position.z = 0;
-    scene.add(sphere);
-    //Add a Sphere to the Scene (body)
-    sphereGeometry = new SphereGeometry(4, 20, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = 0;
-    sphere.position.y = 4;
-    sphere.position.z = 0;
-    scene.add(sphere);
-    //Add a Arms to the Scene
-    cubeGeometry = new BoxGeometry(2, 2, 15);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
-    cube = new Mesh(cubeGeometry, cubeMaterial);
-    cube.castShadow = true;
-    cube.position.x = 0;
-    cube.position.y = 7;
-    cube.position.z = 0;
-    scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
-    cube = new Mesh(cubeGeometry, cubeMaterial);
-    cube.castShadow = true;
-    cube.position.x = 0;
-    cube.position.y = 4;
-    cube.position.z = 6.5;
-    scene.add(cube);
     
-    scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
-    cube = new Mesh(cubeGeometry, cubeMaterial);
-    cube.castShadow = true;
-    cube.position.x = 0;
-    cube.position.y = 4;
-    cube.position.z = -6.5;
-    scene.add(cube);
-    //Add a Sphere to the Scene (Feet)
-    sphereGeometry = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = -1;
-    sphere.position.y = 2;
-    sphere.position.z = 2;
-    scene.add(sphere);
-    
-    sphereGeometry = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
-    sphere = new Mesh(sphereGeometry, sphereMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = -1;
-    sphere.position.y = 2;
-    sphere.position.z = -2;
-    scene.add(sphere);
-
-	}
-
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -197,6 +131,55 @@ function init() {
     
     var ambientLight = new AmbientLight( Math.random() * 0xFFFF34 );
     scene.add( ambientLight );
+    
+    // add controls
+    gui = new GUI();
+    control = new Control(0.02, 60, 40);
+    addControl(control);
+    console.log("Added Control to scene...");
+    // Add framerate stats
+    addStatsObject();
+    console.log("Added Stats to scene...");
+    document.body.appendChild(renderer.domElement);
+    gameLoop(); // render the scene	
+    window.addEventListener('resize', onResize, false);
+}
+function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+function addControl(controlObject) {
+    gui.add(controlObject, 'rotationSpeed', 0, 0.5);
+    gui.add(controlObject, 'addCube');
+    gui.add(controlObject, 'removeCube');
+    gui.add(controlObject, 'outputObjects');
+    gui.add(controlObject, 'numberOfObjects').listen();
+}
+function addStatsObject() {
+    stats = new Stats();
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+}
+// Setup main game loop
+function gameLoop() {
+    stats.update();
+    // rotate the cubes around its axes
+    scene.traverse(function (threeObject) {
+        if (threeObject instanceof Mesh && threeObject != plane) {
+            threeObject.rotation.x += control.rotationSpeed;
+            threeObject.rotation.y += control.rotationSpeed;
+            threeObject.rotation.z += control.rotationSpeed;
+        }
+    });
+    // render using requestAnimationFrame
+    requestAnimationFrame(gameLoop);
+    // render the scene
+    renderer.render(scene, camera);
+}
 }
 // Setup default renderer
 function setupRenderer() {
