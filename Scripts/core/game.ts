@@ -66,7 +66,71 @@ function init() {
 
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
+    
+    blobbyBoy = new threeObject();
      
+    //Add a Sphere to the Scene (head)
+    sphereGeometry = new SphereGeometry(4, 10, 20);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = 0;
+    sphere.position.y = 10;
+    sphere.position.z = 0;
+    blobbyBoy.add(sphere);
+    //Add a Sphere to the Scene (body)
+    sphereGeometry = new SphereGeometry(4, 20, 20);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = 0;
+    sphere.position.y = 4;
+    sphere.position.z = 0;
+    blobbyBoy.add(sphere);
+    //Add a Arms to the Scene
+    cubeGeometry = new BoxGeometry(2, 2, 15);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 7;
+    cube.position.z = 0;
+    blobbyBoy.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 4;
+    cube.position.z = 6.5;
+    blobbyBoy.add(cube);
+    
+    blobbyBoy.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 4;
+    cube.position.z = -6.5;
+    blobbyBoy.add(cube);
+    //Add a Sphere to the Scene (Feet)
+    sphereGeometry = new SphereGeometry(4, 2, 2);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = -1;
+    sphere.position.y = 2;
+    sphere.position.z = 2;
+    blobbyBoy.add(sphere);
+    
+    sphereGeometry = new SphereGeometry(4, 2, 2);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = -1;
+    sphere.position.y = 2;
+    sphere.position.z = -2;
+    blobbyBoy.add(sphere);
+ 
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
@@ -126,7 +190,7 @@ function gameLoop(): void {
     
     // rotate the cubes around its axes
     scene.traverse(function(threeObject:THREE.Object3D) {
-        if (threeObject instanceof Mesh && threeObject != plane) {
+        if (threeObject == blobbyBoy) {
 
             threeObject.rotation.x += control.rotationSpeed;
             threeObject.rotation.y += control.rotationSpeed;
