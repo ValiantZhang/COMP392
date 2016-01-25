@@ -1,6 +1,10 @@
 /// <reference path="_reference.ts"/>
 // MAIN GAME FILE
 // THREEJS Aliases
+/*global THREE*/
+/*global objects*/
+/*global dat*/
+/*global stats*/
 var Scene = THREE.Scene;
 var Renderer = THREE.WebGLRenderer;
 var PerspectiveCamera = THREE.PerspectiveCamera;
@@ -154,10 +158,10 @@ function onResize() {
 }
 function addControl(controlObject) {
     gui.add(controlObject, 'rotationSpeed', 0, 0.5);
-    gui.add(controlObject, 'addCube');
-    gui.add(controlObject, 'removeCube');
-    gui.add(controlObject, 'outputObjects');
-    gui.add(controlObject, 'numberOfObjects').listen();
+    //gui.add(controlObject, 'addCube');
+    //gui.add(controlObject, 'removeCube');
+    //gui.add(controlObject, 'outputObjects');
+   // gui.add(controlObject, 'numberOfObjects').listen();
 }
 function addStatsObject() {
     stats = new Stats();
