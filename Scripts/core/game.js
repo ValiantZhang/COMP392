@@ -24,6 +24,12 @@ var gameObject = objects.gameObject;
 var scene;
 var renderer;
 var camera;
+var cubeGeometry;
+var planeGeometry;
+var sphereGeometry;
+var cubeMaterial;
+var planeMaterial;
+var sphereMaterial;
 var axes;
 var cube;
 var plane;
@@ -34,6 +40,7 @@ var control;
 var gui;
 var stats;
 var step = 0;
+
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -51,16 +58,82 @@ function init() {
     plane.rotation.x = -0.5 * Math.PI;
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
-    // Add an AmbientLight to the scene
-    ambientLight = new AmbientLight(0x0c0c0c);
-    scene.add(ambientLight);
-    console.log("Added an Ambient Light to Scene");
+    //Add a Sphere to the Scene (head)
+    sphereGeometry = new SphereGeometry(4, 10, 20);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = 0;
+    sphere.position.y = 10;
+    sphere.position.z = 0;
+    scene.add(sphere);
+    //Add a Sphere to the Scene (body)
+    sphereGeometry = new SphereGeometry(4, 20, 20);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = 0;
+    sphere.position.y = 4;
+    sphere.position.z = 0;
+    scene.add(sphere);
+    //Add a Arms to the Scene
+    cubeGeometry = new BoxGeometry(2, 2, 15);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 7;
+    cube.position.z = 0;
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 4;
+    cube.position.z = 6.5;
+    scene.add(cube);
+    
+    scene.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 4;
+    cube.position.z = -6.5;
+    scene.add(cube);
+    //Add a Sphere to the Scene (Feet)
+    sphereGeometry = new SphereGeometry(4, 2, 2);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = -1;
+    sphere.position.y = 2;
+    sphere.position.z = 2;
+    scene.add(sphere);
+    
+    sphereGeometry = new SphereGeometry(4, 2, 2);
+    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphere = new Mesh(sphereGeometry, sphereMaterial);
+    sphere.castShadow = true;
+    sphere.position.x = -1;
+    sphere.position.y = 2;
+    sphere.position.z = -2;
+    scene.add(sphere);
+    
+    
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-40, 60, -10);
     spotLight.castShadow = true;
     scene.add(spotLight);
-    console.log("Added a SpotLight Light to Scene");
+    document.body.appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+
+    // Add an AmbientLight to the scene
+    ambientLight = new AmbientLight(Math.random() * 0xFFFF34 );
+    scene.add(ambientLight);
+    console.log("Added an Ambient Light to Scene");
+
     // add controls
     gui = new GUI();
     control = new Control(0.02, 60, 40);
