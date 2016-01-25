@@ -17,6 +17,7 @@ var Control = objects.Control;
 var GUI = dat.GUI;
 var Color = THREE.Color;
 var Vector3 = THREE.Vector3;
+var gameObject = objects.gameObject;
 var scene;
 var renderer;
 var camera;
@@ -36,6 +37,7 @@ var pointLight;
 var control;
 var gui;
 var stats;
+var step = 0;
 
 function init() {
     // Instantiate a new Scene object
