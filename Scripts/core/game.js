@@ -65,7 +65,7 @@ function init() {
 
     blobbyBoy = new gameObject();
 
-    //Add a Sphere to the Scene (head)
+    //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphere, sphereMaterial);
@@ -73,9 +73,9 @@ function init() {
     sphere.position.x = 0;
     sphere.position.y = 10;
     sphere.position.z = 0;
-    scene.add(sphere);
+    blobbyBoy.add(sphere);
 
-    //Add a Sphere to the Scene (body)
+    //Add a Sphere to the humanoid (body)
     sphere = new SphereGeometry(4, 20, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphere, sphereMaterial);
@@ -85,7 +85,7 @@ function init() {
     sphere.position.z = 0;
     blobbyBoy.add(sphere);
 
-    //Add a Arms to the Scene
+    //Add a Arms to the humanoid
     cube = new BoxGeometry(2, 2, 15);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cube, cubeMaterial);
@@ -113,7 +113,7 @@ function init() {
     cube.position.z = -6.5;
     blobbyBoy.add(cube);
 
-    //Add a Sphere to the Scene (Feet)
+    //Add a Sphere to the humanoid (Feet)
     sphere = new SphereGeometry(4, 2, 2);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphere, sphereMaterial);
