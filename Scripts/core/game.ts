@@ -31,6 +31,7 @@ var camera: PerspectiveCamera;
 var axes: AxisHelper;
 var cube: Mesh;
 var plane: Mesh;
+var blobbyBoy: Mesh;
 var sphere: Mesh;
 var ambientLight: AmbientLight;
 var spotLight: SpotLight;

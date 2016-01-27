@@ -27,6 +27,7 @@ var camera;
 var axes;
 var cube;
 var plane;
+var blobbyBoy;
 var sphere;
 var ambientLight;
 var spotLight;
