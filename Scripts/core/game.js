@@ -25,12 +25,6 @@ var scene;
 var renderer;
 var camera;
 var axes;
- var cubeGeometry;
- var planeGeometry;
- var sphereGeometry;
- var cubeMaterial;
- var planeMaterial;
- var sphereMaterial;
 var cube;
 var plane;
 var sphere;
@@ -65,22 +59,9 @@ function init() {
 
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
-<<<<<<< HEAD
 
     blobbyBoy = new gameObject();
 
-=======
-    
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 140e77b... create object
-=======
->>>>>>> parent of 140e77b... create object
-=======
->>>>>>> parent of 140e77b... create object
-=======
->>>>>>> parent of 140e77b... create object
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -148,6 +129,8 @@ function init() {
     sphere.position.z = -2;
     blobbyBoy.add(sphere);
 
+    scene.add(blobbyBoy);
+
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
     scene.add(ambientLight);
@@ -184,10 +167,10 @@ function onResize() {
 
 function addControl(controlObject) {
     gui.add(controlObject, 'rotationSpeed', 0, 0.5);
-    gui.add(controlObject, 'addCube');
-    gui.add(controlObject, 'removeCube');
-    gui.add(controlObject, 'outputObjects');
-    gui.add(controlObject, 'numberOfObjects').listen();
+    //gui.add(controlObject, 'addCube');
+    //gui.add(controlObject, 'removeCube');
+    //gui.add(controlObject, 'outputObjects');
+    //gui.add(controlObject, 'numberOfObjects').listen();
 }
 
 function addStatsObject() {

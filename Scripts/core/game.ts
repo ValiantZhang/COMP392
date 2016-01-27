@@ -130,6 +130,8 @@ function init() {
     sphere.position.y = 2;
     sphere.position.z = -2;
     blobbyBoy.add(sphere);
+    
+    scene.add(blobbyBoy);
  
     
     // Add an AmbientLight to the scene
@@ -169,10 +171,10 @@ function onResize(): void {
 
 function addControl(controlObject: Control): void {
     gui.add(controlObject, 'rotationSpeed', 0, 0.5);
-    gui.add(controlObject, 'addCube');
-    gui.add(controlObject, 'removeCube');
-    gui.add(controlObject, 'outputObjects');
-    gui.add(controlObject, 'numberOfObjects').listen();
+    //gui.add(controlObject, 'addCube');
+    //gui.add(controlObject, 'removeCube');
+    //gui.add(controlObject, 'outputObjects');
+    //gui.add(controlObject, 'numberOfObjects').listen();
 }
 
 function addStatsObject() {
