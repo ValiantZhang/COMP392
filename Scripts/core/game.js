@@ -25,6 +25,12 @@ var scene;
 var renderer;
 var camera;
 var axes;
+ var cubeGeometry;
+ var planeGeometry;
+ var sphereGeometry;
+ var cubeMaterial;
+ var planeMaterial;
+ var sphereMaterial;
 var cube;
 var plane;
 var sphere;
@@ -67,6 +73,9 @@ function init() {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 140e77b... create object
+=======
 >>>>>>> parent of 140e77b... create object
 =======
 >>>>>>> parent of 140e77b... create object
