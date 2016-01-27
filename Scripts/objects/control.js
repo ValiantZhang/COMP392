@@ -20,6 +20,7 @@ var objects;
                 this.numberOfObjects = scene.children.length;
             }
         };
+
         // Add Cube Method
         Control.prototype.addCube = function () {
             var cubeSize = Math.ceil((Math.random() * 3));
@@ -29,6 +30,7 @@ var objects;
             scene.add(cube);
             this.numberOfObjects = scene.children.length;
         };
+
         // show scene objects
         Control.prototype.outputObjects = function () {
             console.log(scene.children);
@@ -37,4 +39,3 @@ var objects;
     })();
     objects.Control = Control;
 })(objects || (objects = {}));
-//# sourceMappingURL=control.js.map

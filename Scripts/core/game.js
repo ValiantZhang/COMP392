@@ -1,41 +1,30 @@
 /// <reference path="_reference.ts"/>
 // MAIN GAME FILE
 // THREEJS Aliases
-/*global THREE*/
-/*global objects*/
-/*global dat*/
-/*global Stats*/
-/*global requestAnimationFrame*/
 var Scene = THREE.Scene;
 var Renderer = THREE.WebGLRenderer;
 var PerspectiveCamera = THREE.PerspectiveCamera;
 var BoxGeometry = THREE.BoxGeometry;
-var CubeGeometry = THREE.CubeGeometry;
+
 var PlaneGeometry = THREE.PlaneGeometry;
 var SphereGeometry = THREE.SphereGeometry;
 var AxisHelper = THREE.AxisHelper;
 var LambertMaterial = THREE.MeshLambertMaterial;
-var MeshBasicMaterial = THREE.MeshBasicMaterial;
+
 var Mesh = THREE.Mesh;
 var SpotLight = THREE.SpotLight;
-var PointLight = THREE.PointLight;
+
 var AmbientLight = THREE.AmbientLight;
 var Control = objects.Control;
 var GUI = dat.GUI;
-var Color = THREE.Color;
-var Vector3 = THREE.Vector3;
+
 //Custom Game Objects
 var gameObject = objects.gameObject;
+
 var scene;
 var renderer;
 var camera;
 var axes;
-var cubeGeometry;
-var planeGeometry;
-var sphereGeometry;
-var cubeMaterial;
-var planeMaterial;
-var sphereMaterial;
 var cube;
 var plane;
 var sphere;
@@ -45,28 +34,34 @@ var control;
 var gui;
 var stats;
 var step = 0;
-var blobbyBoy;
 
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
+
     setupRenderer(); // setup the default renderer
+
     setupCamera(); // setup the camera
+
     //scene.fog=new THREE.FogExp2( 0xffffff, 0.015 );
     scene.fog = new THREE.Fog(0xffffff, 0.015, 100);
     console.log("Added Fog to scene...");
+
     // add an axis helper to the scene
     axes = new AxisHelper(20);
     scene.add(axes);
     console.log("Added Axis Helper to scene...");
+
     //Add a Plane to the Scene
     plane = new gameObject(new PlaneGeometry(60, 40, 1, 1), new LambertMaterial({ color: 0xffffff }), 0, 0, 0);
+
     plane.rotation.x = -0.5 * Math.PI;
+
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
-    
-    blobbyBoy = new THREE.object3D();
-    
+
+    blobbyBoy = new gam();
+
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -76,6 +71,7 @@ function init() {
     sphere.position.y = 10;
     sphere.position.z = 0;
     blobbyBoy.add(sphere);
+
     //Add a Sphere to the Scene (body)
     sphereGeometry = new SphereGeometry(4, 20, 20);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -85,6 +81,7 @@ function init() {
     sphere.position.y = 4;
     sphere.position.z = 0;
     blobbyBoy.add(sphere);
+
     //Add a Arms to the Scene
     cubeGeometry = new BoxGeometry(2, 2, 15);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -93,7 +90,8 @@ function init() {
     cube.position.x = 0;
     cube.position.y = 7;
     cube.position.z = 0;
-    blobbyBoy.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+    blobbyBoy.add(cube);
+    cubeGeometry = new BoxGeometry(2, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
@@ -101,8 +99,9 @@ function init() {
     cube.position.y = 4;
     cube.position.z = 6.5;
     blobbyBoy.add(cube);
-    
-    blobbyBoy.add(cube);cubeGeometry = new BoxGeometry(2, 5, 2);
+
+    blobbyBoy.add(cube);
+    cubeGeometry = new BoxGeometry(2, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
     cube = new Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
@@ -110,6 +109,7 @@ function init() {
     cube.position.y = 4;
     cube.position.z = -6.5;
     blobbyBoy.add(cube);
+
     //Add a Sphere to the Scene (Feet)
     sphereGeometry = new SphereGeometry(4, 2, 2);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
@@ -119,7 +119,7 @@ function init() {
     sphere.position.y = 2;
     sphere.position.z = 2;
     blobbyBoy.add(sphere);
-    
+
     sphereGeometry = new SphereGeometry(4, 2, 2);
     sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
     sphere = new Mesh(sphereGeometry, sphereMaterial);
@@ -128,44 +128,49 @@ function init() {
     sphere.position.y = 2;
     sphere.position.z = -2;
     blobbyBoy.add(sphere);
-    
-    //Add BlobbyBoy
-    scene.add(blobbyBoy);
-    
+
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
     scene.add(ambientLight);
     console.log("Added an Ambient Light to Scene");
+
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-40, 60, -10);
     spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
+
     // add controls
     gui = new GUI();
     control = new Control(0.02, 60, 40);
     addControl(control);
     console.log("Added Control to scene...");
+
     // Add framerate stats
     addStatsObject();
     console.log("Added Stats to scene...");
+
     document.body.appendChild(renderer.domElement);
-    gameLoop(); // render the scene	
+    gameLoop(); // render the scene
+
     window.addEventListener('resize', onResize, false);
 }
+
 function onResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
 function addControl(controlObject) {
     gui.add(controlObject, 'rotationSpeed', 0, 0.5);
-    //gui.add(controlObject, 'addCube');
-    //gui.add(controlObject, 'removeCube');
-    //gui.add(controlObject, 'outputObjects');
-   // gui.add(controlObject, 'numberOfObjects').listen();
+    gui.add(controlObject, 'addCube');
+    gui.add(controlObject, 'removeCube');
+    gui.add(controlObject, 'outputObjects');
+    gui.add(controlObject, 'numberOfObjects').listen();
 }
+
 function addStatsObject() {
     stats = new Stats();
     stats.setMode(0);
@@ -174,22 +179,27 @@ function addStatsObject() {
     stats.domElement.style.top = '0px';
     document.body.appendChild(stats.domElement);
 }
+
 // Setup main game loop
 function gameLoop() {
     stats.update();
+
     // rotate the cubes around its axes
     scene.traverse(function (threeObject) {
-        if (threeObject instanceof Mesh && threeObject != plane) {
+        if (threeObject == blobbyBoy) {
             threeObject.rotation.x += control.rotationSpeed;
             threeObject.rotation.y += control.rotationSpeed;
             threeObject.rotation.z += control.rotationSpeed;
         }
     });
+
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
+
     // render the scene
     renderer.render(scene, camera);
 }
+
 // Setup default renderer
 function setupRenderer() {
     renderer = new Renderer();
@@ -198,6 +208,7 @@ function setupRenderer() {
     renderer.shadowMapEnabled = true;
     console.log("Finished setting up Renderer...");
 }
+
 // Setup main camera for the scene
 function setupCamera() {
     camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -207,4 +218,3 @@ function setupCamera() {
     camera.lookAt(scene.position);
     console.log("Finished setting up Camera...");
 }
-//# sourceMappingURL=game.js.map
