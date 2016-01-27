@@ -30,6 +30,7 @@ var plane;
 var blobbyBoy;
 var sphere;
 var sphereMaterial;
+var cubeMaterial;
 var ambientLight;
 var spotLight;
 var control;
