@@ -73,7 +73,7 @@ function init() {
     sphere.position.x = 0;
     sphere.position.y = 10;
     sphere.position.z = 0;
-    blobbyBoy.add(sphere);
+    scene.add(sphere);
 
     //Add a Sphere to the Scene (body)
     sphere = new SphereGeometry(4, 20, 20);
