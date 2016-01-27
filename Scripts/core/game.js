@@ -65,6 +65,9 @@ function init() {
 
 =======
     
+<<<<<<< HEAD
+>>>>>>> parent of 140e77b... create object
+=======
 >>>>>>> parent of 140e77b... create object
     //Add a Sphere to the Scene (head)
     sphereGeometry = new SphereGeometry(4, 10, 20);
