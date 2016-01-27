@@ -29,6 +29,7 @@ var cube;
 var plane;
 var blobbyBoy;
 var sphere;
+var sphereMaterial;
 var ambientLight;
 var spotLight;
 var control;

@@ -33,6 +33,7 @@ var cube: Mesh;
 var plane: Mesh;
 var blobbyBoy: Mesh;
 var sphere: Mesh;
+var sphereMaterial : MeshLambertMaterial;
 var ambientLight: AmbientLight;
 var spotLight: SpotLight;
 var control: Control;
