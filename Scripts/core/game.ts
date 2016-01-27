@@ -31,7 +31,7 @@ var camera: PerspectiveCamera;
 var axes: AxisHelper;
 var cube: Mesh;
 var plane: Mesh;
-var blobbyBoy: Mesh;
+var blobbyBoy;
 var sphere: Mesh;
 var sphereMaterial : MeshLambertMaterial;
 var cubeMaterial : MeshLambertMaterial;
@@ -69,6 +69,7 @@ function init() {
 
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
+    
     
     blobbyBoy = new gameObject();
      
