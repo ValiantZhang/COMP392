@@ -71,7 +71,7 @@ function init() {
     console.log("Added Plane Primitive to scene...");
     
     
-    blobbyBoy = new THREE.object3D();
+    blobbyBoy = new THREE.Object3D();
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
