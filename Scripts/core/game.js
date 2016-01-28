@@ -140,6 +140,7 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
+    gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
@@ -157,10 +158,9 @@ function addStatsObject() {
 // Setup main game loop
 function gameLoop() {
     stats.update();
-    // rotate the cubes around its axes
     scene.traverse(function (threeObject) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += control.rotationSpeed;
+            threeObject.rotation.x += control.rotationSpeedX;
         }
     });
     // render using requestAnimationFrame
