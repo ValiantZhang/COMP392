@@ -32,7 +32,7 @@ var control;
 var gui;
 var stats;
 var step = 0;
-var shirtTexture = THREE.ImageUtils.loadTexture("Assets/Textures/plaid.jpg");
+var shirtTexture = THREE.ImageUtils.loadTexture("../../Assets/Textures/plaid.jpg");
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();

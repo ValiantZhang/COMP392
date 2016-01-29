@@ -41,7 +41,7 @@ var control: Control;
 var gui: GUI;
 var stats: Stats;
 var step: number = 0;
-var shirtTexture = THREE.ImageUtils.loadTexture( "plaid.jpg" );
+var shirtTexture = THREE.ImageUtils.loadTexture( "../../Assets/Textures/plaid.jpg" );
 
 function init() {
     // Instantiate a new Scene object
