@@ -11,8 +11,8 @@ module objects {
         public rotationSpeed: number;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        constructor(rotationSpeed: number, planeWidth: number, planeHeight: number) {
-            this.rotationSpeed = rotationSpeed;
+        constructor(rotationSpeedX: number, planeWidth: number, planeHeight: number) {
+            this.rotationSpeed = rotationSpeedX;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
