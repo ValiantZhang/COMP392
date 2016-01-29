@@ -125,7 +125,9 @@ function init() {
     console.log("Added a SpotLight Light to Scene");
     // add controls
     gui = new GUI();
-    control = new Control(0.02, 60, 40);
+    controlx = new Control(0.0, 60, 40);
+    controly = new Control(0.0, 60, 40);
+    controlz = new Control(0.0, 60, 40);
     addControl(control);
     console.log("Added Control to scene...");
     // Add framerate stats
@@ -160,7 +162,9 @@ function gameLoop() {
     stats.update();
     scene.traverse(function (threeObject) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += control.rotationSpeed;
+            threeObject.rotation.x += controlx.rotationSpeed;
+            threeObject.rotation.y += controly.rotationSpeed;
+            threeObject.rotation.z += controlz.rotationSpeed;
         }
     });
     // render using requestAnimationFrame

@@ -152,7 +152,9 @@ function init() {
     
     // add controls
     gui = new GUI();
-    control = new Control(0.02, 60, 40);
+    controlx = new Control(0.0, 60, 40);
+    controly = new Control(0.0, 60, 40);
+    controlz = new Control(0.0, 60, 40);
     addControl(control);
     console.log("Added Control to scene...");
     
@@ -196,9 +198,9 @@ function gameLoop(): void {
     
     scene.traverse(function(threeObject:THREE.Object3D) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += control.rotationSpeed;
-            //threeObject.rotation.y += control.rotationSpeedY;
-            //threeObject.rotation.z += control.rotationSpeed;
+            threeObject.rotation.x += controlx.rotationSpeed;
+            threeObject.rotation.y += controly.rotationSpeed;
+            threeObject.rotation.z += controlz.rotationSpeed;
         }
     });
     
