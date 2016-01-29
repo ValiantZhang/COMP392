@@ -140,7 +140,7 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
