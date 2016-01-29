@@ -52,7 +52,7 @@ function init() {
     blobbyBoy = new THREE.Object3D();
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ 'Assets/Textures/plaid.jpg':  });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -112,7 +112,6 @@ function init() {
     sphere.position.z = -2;
     blobbyBoy.add(sphere);
     scene.add(blobbyBoy);
-    console.log('ADDED BLOBBY BOY');
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0xCEECF5);
     scene.add(ambientLight);

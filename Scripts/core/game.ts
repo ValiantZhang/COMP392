@@ -75,7 +75,7 @@ function init() {
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ 'Assets/Textures/plaid.jpg'});
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
