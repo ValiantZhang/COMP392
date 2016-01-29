@@ -41,6 +41,7 @@ var control: Control;
 var gui: GUI;
 var stats: Stats;
 var step: number = 0;
+var shirtTexture = THREE.ImageUtils.loadTexture( "../../Assets/Textures/plaid.jpg" );
 
 function init() {
     // Instantiate a new Scene object
@@ -75,7 +76,7 @@ function init() {
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ 'Assets/Textures/plaid.jpg'});
+    sphereMaterial = new LambertMaterial({map: shirtTexture});
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
