@@ -8,7 +8,7 @@ module objects {
         private _planeHeight: number;
         
         // PUBLIC INSTANCE VARIABLES
-        public rotationSpeed: number;
+        public rotationSpeedX: number;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(rotationSpeedX: number, planeWidth: number, planeHeight: number) {
