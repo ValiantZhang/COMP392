@@ -9,7 +9,6 @@ module objects {
         
         // PUBLIC INSTANCE VARIABLES
         public rotationSpeed: number;
-        public rotationX: number;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(rotationSpeed: number, planeWidth: number, planeHeight: number) {

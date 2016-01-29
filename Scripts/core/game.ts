@@ -198,7 +198,7 @@ function gameLoop(): void {
         if (threeObject == blobbyBoy) {
 
             threeObject.rotation.x += control.rotationSpeedX;
-            threeObject.rotation.y += control.rotationSpeedY;
+            //threeObject.rotation.y += control.rotationSpeedY;
             //threeObject.rotation.z += control.rotationSpeed;
         }
     });
