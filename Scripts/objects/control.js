@@ -4,12 +4,18 @@ var objects;
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        function Control(rotationSpeedX, planeWidth, planeHeight) {
-            this.rotationSpeedX = rotationSpeedX;
+        function Control(rotationSpeed, planeWidth, planeHeight) {
+            this.rotationSpeed = rotationSpeed;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
         }
+        Control.prototype.rotationX = function (rotationX, planeWidth, planeHeight) {
+            this.rotationX = rotationX;
+            this.numberOfObjects = scene.children.length;
+            this._planeWidth = planeWidth;
+            this._planeHeight = planeHeight;
+        };
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
         // Remove Cube Method +++++++++++++++++++++++++++++++++
         Control.prototype.removeCube = function () {
