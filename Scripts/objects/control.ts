@@ -18,14 +18,6 @@ module objects {
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
         }
-        
-        public rotationX(rotationX: number, planeWidth: number, planeHeight: number): void {
-            this.rotationX = rotationX;
-            this.numberOfObjects = scene.children.length;
-            this._planeWidth = planeWidth;
-            this._planeHeight = planeHeight;
-        }
-
 
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
