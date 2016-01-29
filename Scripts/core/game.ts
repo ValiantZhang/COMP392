@@ -136,7 +136,6 @@ function init() {
     blobbyBoy.add(sphere);
     
     scene.add(blobbyBoy);
- console.log('ADDED BLOBBY BOY');
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
@@ -196,7 +195,7 @@ function gameLoop(): void {
     
     scene.traverse(function(threeObject:THREE.Object3D) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += control.rotationSpeedX;
+            threeObject.rotation.x += control.rotationSpeed;
             //threeObject.rotation.y += control.rotationSpeedY;
             //threeObject.rotation.z += control.rotationSpeed;
         }

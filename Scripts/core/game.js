@@ -160,7 +160,7 @@ function gameLoop() {
     stats.update();
     scene.traverse(function (threeObject) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += control.rotationSpeedX;
+            threeObject.rotation.x += control.rotationSpeed;
         }
     });
     // render using requestAnimationFrame
