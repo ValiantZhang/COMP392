@@ -5,7 +5,7 @@ var objects;
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         function Control(rotationSpeedX, planeWidth, planeHeight) {
-            this.rotationSpeed = rotationSpeedX;
+            this.rotationSpeedX = rotationSpeedX;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
