@@ -72,9 +72,6 @@ function init() {
     
     
     blobbyBoy = new THREE.Object3D();
-    blobbyBoy.position.x = 0;
-    blobbyBoy.position.y = 0;
-    blobbyBoy.position.z = 0;
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
@@ -139,7 +136,7 @@ function init() {
     blobbyBoy.add(sphere);
     
     scene.add(blobbyBoy);
- 
+ console.log('ADDED BLOBBY BOY');
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);

@@ -112,6 +112,7 @@ function init() {
     sphere.position.z = -2;
     blobbyBoy.add(sphere);
     scene.add(blobbyBoy);
+    console.log('ADDED BLOBBY BOY');
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
     scene.add(ambientLight);
