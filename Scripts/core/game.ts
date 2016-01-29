@@ -139,7 +139,7 @@ function init() {
     scene.add(blobbyBoy);
     
     // Add an AmbientLight to the scene
-    ambientLight = new AmbientLight(0xEFF5FB);
+    ambientLight = new AmbientLight(0x0c0c0c);
     scene.add(ambientLight);
     console.log("Added an Ambient Light to Scene");
 	
