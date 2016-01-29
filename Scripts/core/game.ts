@@ -177,6 +177,8 @@ function onResize(): void {
 
 function addControl(controlObject: Control): void {
     gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
     //gui.add(controlObject, 'outputObjects');
