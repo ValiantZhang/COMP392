@@ -76,7 +76,7 @@ function init() {
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({map: shirtTexture});
+    sphereMaterial = new LambertMaterial({color: 0x63F7CA });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -85,7 +85,7 @@ function init() {
     blobbyBoy.add(sphere);
     //Add a Sphere to the humanoid (body)
     sphere = new SphereGeometry(4, 20, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ map: shirtTexture });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -139,7 +139,7 @@ function init() {
     scene.add(blobbyBoy);
     
     // Add an AmbientLight to the scene
-    ambientLight = new AmbientLight(0xCEECF5);
+    ambientLight = new AmbientLight(0xEFF5FB);
     scene.add(ambientLight);
     console.log("Added an Ambient Light to Scene");
 	
