@@ -128,7 +128,9 @@ function init() {
     controlx = new Control(0.0, 60, 40);
     controly = new Control(0.0, 60, 40);
     controlz = new Control(0.0, 60, 40);
-    addControl(control);
+    addControl(controlx);
+    addControl(controly);
+    addControl(controlz);
     console.log("Added Control to scene...");
     // Add framerate stats
     addStatsObject();
@@ -143,8 +145,6 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
