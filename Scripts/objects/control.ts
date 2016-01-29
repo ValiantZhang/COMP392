@@ -9,6 +9,7 @@ module objects {
         
         // PUBLIC INSTANCE VARIABLES
         public rotationSpeedX: number;
+        public rotationSpeedY: number;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(rotationSpeedX: number, planeWidth: number, planeHeight: number) {
@@ -17,6 +18,14 @@ module objects {
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
         }
+        
+        constructor(rotationSpeedY: number, planeWidth: number, planeHeight: number) {
+            this.rotationSpeedY = rotationSpeedY;
+            this.numberOfObjects = scene.children.length;
+            this._planeWidth = planeWidth;
+            this._planeHeight = planeHeight;
+        }
+
 
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++

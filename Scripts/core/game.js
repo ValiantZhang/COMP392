@@ -140,8 +140,8 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedY', -0.5, 0.5);
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
     //gui.add(controlObject, 'outputObjects');
@@ -161,6 +161,7 @@ function gameLoop() {
     scene.traverse(function (threeObject) {
         if (threeObject == blobbyBoy) {
             threeObject.rotation.x += control.rotationSpeedX;
+            threeObject.rotation.y += control.rotationSpeedY;
         }
     });
     // render using requestAnimationFrame
