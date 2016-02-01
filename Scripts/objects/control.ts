@@ -11,13 +11,13 @@ module objects {
         public rotationSpeedX: number;
         public rotationSpeedY: number;
         public rotationSpeedZ: number;
-        public numberOfObjects: number;
+        //public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(rotationSpeedX: number, rotationSpeedY: number, rotationSpeedZ: number, planeWidth: number, planeHeight: number) {
             this.rotationSpeedX = rotationSpeedX;
             this.rotationSpeedY = rotationSpeedY;
             this.rotationSpeedZ = rotationSpeedZ;
-            this.numberOfObjects = scene.children.length;
+            //this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
         }
@@ -26,14 +26,14 @@ module objects {
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
         
         // Remove Cube Method +++++++++++++++++++++++++++++++++
-        public removeCube(): void {
+        /*public removeCube(): void {
             var allChildren: THREE.Object3D[] = scene.children;
             var lastObject = allChildren[allChildren.length - 1];
             if (lastObject instanceof THREE.Mesh) {
                 scene.remove(lastObject);
                 this.numberOfObjects = scene.children.length;
             }
-        }*/
+        }
         
         // Add Cube Method
         public addCube(): void {
@@ -53,6 +53,6 @@ module objects {
         // show scene objects
         public outputObjects(): void {
             console.log(scene.children);
-        }
+        }*/
     }
 }

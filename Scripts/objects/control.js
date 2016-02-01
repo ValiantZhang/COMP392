@@ -22,22 +22,20 @@ var objects;
                 this.numberOfObjects = scene.children.length;
             }
         };
-        Control.prototype. = ;
+        // Add Cube Method
+        Control.prototype.addCube = function () {
+            var cubeSize = Math.ceil((Math.random() * 3));
+            var cubeGeometry = new THREE.CubeGeometry(cubeSize, cubeSize, cubeSize);
+            var cubeMaterial = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
+            var cube = new gameObject(cubeGeometry, cubeMaterial, -30 + Math.round((Math.random() * this._planeWidth)), Math.round((Math.random() * 5)), -20 + Math.round((Math.random() * this._planeHeight)));
+            scene.add(cube);
+            this.numberOfObjects = scene.children.length;
+        };
+        // show scene objects
+        Control.prototype.outputObjects = function () {
+            console.log(scene.children);
+        };
         return Control;
     })();
     objects.Control = Control;
-    /;
-    addCube();
-    void {
-        var: cubeSize, number: number,
-        var: cubeGeometry, CubeGeometry: CubeGeometry,
-        var: cubeMaterial, LambertMaterial: LambertMaterial,
-        var: cube = new gameObject(cubeGeometry, cubeMaterial, -30 + Math.round((Math.random() * this._planeWidth)), Math.round((Math.random() * 5)), -20 + Math.round((Math.random() * this._planeHeight))),
-        scene: .add(cube),
-        this: .numberOfObjects = scene.children.length
-    };
-    outputObjects();
-    void {
-        console: .log(scene.children)
-    };
 })(objects || (objects = {}));
