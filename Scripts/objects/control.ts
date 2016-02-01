@@ -25,23 +25,6 @@ module objects {
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
         
-        /*public colorPicker(): void{
-            var Configuration=function(){
-                this.color = "#ffae23";
-            }
-            var conf = new Configuration();
-    
-            var controlador = gui.addColor( conf, 'color');
-            controlador.onChange( function( changeColor  )
-                {
-          //the return value by the chooser is like as: #ffff so
-          //remove the # and replace by 0x
-          changeColor=changeColor.replace( '#','0x' );
-          //create a Color
-          var changeColor = new THREE.Color( changeColor ) ;
-                });
-        }
-        
         // Remove Cube Method +++++++++++++++++++++++++++++++++
         public removeCube(): void {
             var allChildren: THREE.Object3D[] = scene.children;
