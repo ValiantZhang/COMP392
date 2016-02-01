@@ -4,11 +4,10 @@ var objects;
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        function Control(rotationSpeedX, rotationSpeedY, rotationSpeedZ, color, planeWidth, planeHeight) {
+        function Control(rotationSpeedX, rotationSpeedY, rotationSpeedZ, planeWidth, planeHeight) {
             this.rotationSpeedX = rotationSpeedX;
             this.rotationSpeedY = rotationSpeedY;
             this.rotationSpeedZ = rotationSpeedZ;
-            this.color = color;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
@@ -45,7 +44,7 @@ var objects;
             var cubeSize = Math.ceil((Math.random() * 3));
             var cubeGeometry = new THREE.CubeGeometry(cubeSize, cubeSize, cubeSize);
             var cubeMaterial = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
-            var cube = new objects.gameObject(cubeGeometry, cubeMaterial, -30 + Math.round((Math.random() * this._planeWidth)), Math.round((Math.random() * 5)), -20 + Math.round((Math.random() * this._planeHeight)));
+            var cube = new gameObject(cubeGeometry, cubeMaterial, -30 + Math.round((Math.random() * this._planeWidth)), Math.round((Math.random() * 5)), -20 + Math.round((Math.random() * this._planeHeight)));
             scene.add(cube);
             this.numberOfObjects = scene.children.length;
         };

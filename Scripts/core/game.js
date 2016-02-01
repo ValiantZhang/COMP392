@@ -149,7 +149,9 @@ function addControl(controlObject) {
     gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedY', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedZ', -0.5, 0.5);
-    colorPicker = gui.addColor(colorConfig, 'color').onChange(function (getColor) { changeColor = new THREE.Color(getColor); });
+    colorPicker = gui.addColor(colorConfig, 'color').onChange(function (getColor) {
+        changeColor = new THREE.Color(getColor);
+    });
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
     //gui.add(controlObject, 'outputObjects');

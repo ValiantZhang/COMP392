@@ -11,14 +11,12 @@ module objects {
         public rotationSpeedX: number;
         public rotationSpeedY: number;
         public rotationSpeedZ: number;
-        public color: string;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        constructor(rotationSpeedX: number, rotationSpeedY: number, rotationSpeedZ: number,color: string, planeWidth: number, planeHeight: number) {
+        constructor(rotationSpeedX: number, rotationSpeedY: number, rotationSpeedZ: number, planeWidth: number, planeHeight: number) {
             this.rotationSpeedX = rotationSpeedX;
             this.rotationSpeedY = rotationSpeedY;
             this.rotationSpeedZ = rotationSpeedZ;
-            this.color = color;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
