@@ -32,7 +32,7 @@ var axes: AxisHelper;
 var cube: Mesh;
 var plane: Mesh;
 var blobbyBoy: gameObject;
-var changeColor = new Color(0x63F7CA);
+var changeColor;
 var sphere: Mesh;
 var sphereMaterial : MeshLambertMaterial;
 var cubeMaterial : MeshLambertMaterial;
@@ -42,9 +42,10 @@ var control: Control;
 var gui: GUI;
 var stats: Stats;
 var step: number = 0;
-var config = function(){this.color = "#000000";}
-var colorConfig = new config();
+var config;
+var colorConfig;
 var colorPicker;
+var changeColor
 var shirtTexture = THREE.ImageUtils.loadTexture( "../../Assets/Textures/plaid.jpg" );
 
 function init() {
@@ -75,7 +76,9 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
-    
+    changeColor = new Color(0x63F7CA);
+    config = function(){this.color = "#000000";}
+    colorConfig = new config();
     blobbyBoy = new THREE.Object3D();
      
     //Add a Sphere to the humanoid (head)
@@ -185,7 +188,9 @@ function addControl(controlObject: Control): void {
     
     colorPicker = gui.addColor( colorConfig, 'color').onChange(
         function(getColor){
+            getColor=getColor.replace( '#','0x' );
             changeColor =  new THREE.Color(getColor);
+            console.log(getColor);
         });
 
     //gui.add(controlObject, 'addCube');
