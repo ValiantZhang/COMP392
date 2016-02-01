@@ -32,10 +32,16 @@ var axes: AxisHelper;
 var cube: Mesh;
 var plane: Mesh;
 var blobbyBoy: gameObject;
-var changeColor;
+var blobbyBoyColor;
 var sphere: Mesh;
 var sphereMaterial : MeshLambertMaterial;
 var cubeMaterial : MeshLambertMaterial;
+var headMaterial : MeshLambertMaterial;
+var shoulderMaterial : MeshLambertMaterial;
+var leftArmMaterial : MeshLambertMaterial;
+var rightArmMaterial : MeshLambertMaterial;
+var leftLegMaterial : MeshLambertMaterial;
+var rightLegMaterial : MeshLambertMaterial;
 var ambientLight: AmbientLight;
 var spotLight: SpotLight;
 var control: Control;
@@ -45,7 +51,7 @@ var step: number = 0;
 var config;
 var colorConfig;
 var colorPicker;
-var changeColor
+var blobbyBoyColor;
 var shirtTexture = THREE.ImageUtils.loadTexture( "../../Assets/Textures/plaid.jpg" );
 
 function init() {
@@ -76,15 +82,15 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
-    changeColor = new Color(0x63F7CA);
+    blobbyBoyColor = new Color(0x63F7CA);
     config = function(){this.color = "#000000";}
     colorConfig = new config();
     blobbyBoy = new THREE.Object3D();
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({color: changeColor });
-    sphere = new Mesh(sphere, sphereMaterial);
+    headMaterial = new LambertMaterial({color: blobbyBoyColor });
+    sphere = new Mesh(sphere, headMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
     sphere.position.y = 10;
@@ -101,24 +107,26 @@ function init() {
     blobbyBoy.add(sphere);
     //Add a Arms to the humanoid
     cube = new BoxGeometry(2, 2, 15);
-    cubeMaterial = new LambertMaterial({ color: changeColor });
-    cube = new Mesh(cube, cubeMaterial);
+    shoulderMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, shoulderMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 7;
     cube.position.z = 0;
-    blobbyBoy.add(cube);cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: changeColor });
-    cube = new Mesh(cube, cubeMaterial);
+    blobbyBoy.add(cube);
+    
+    cube = new BoxGeometry(2, 5, 2);
+    leftArmMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, leftArmMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
     cube.position.z = 6.5;
     blobbyBoy.add(cube);
     
-    blobbyBoy.add(cube);cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: changeColor });
-    cube = new Mesh(cube, cubeMaterial);
+    cube = new BoxGeometry(2, 5, 2);
+    rightArmMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, rightArmMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 4;
@@ -126,8 +134,8 @@ function init() {
     blobbyBoy.add(cube);
     //Add a Sphere to the humanoid (Feet)
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: changeColor });
-    sphere = new Mesh(sphere, sphereMaterial);
+    rightLegMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    sphere = new Mesh(sphere, rightLegMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
     sphere.position.y = 2;
@@ -135,8 +143,8 @@ function init() {
     blobbyBoy.add(sphere);
     
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: changeColor });
-    sphere = new Mesh(sphere, sphereMaterial);
+    leftLegMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    sphere = new Mesh(sphere, leftLegMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
     sphere.position.y = 2;
@@ -188,8 +196,13 @@ function addControl(controlObject: Control): void {
     
     colorPicker = gui.addColor( colorConfig, 'color').onChange(
         function(getColor){
-            getColor=getColor.replace( '#','0x' );
-            changeColor =  new THREE.Color(getColor);
+            //getColor=getColor.replace( '#','0x' );
+            headMaterial.color =  new THREE.Color(getColor);
+            shoulderMaterial.color = new THREE.Color(getColor);
+            leftArmMaterial.color =  new THREE.Color(getColor);
+            rightArmMaterial.color = new THREE.Color(getColor);
+            leftLegMaterial.color =  new THREE.Color(getColor);
+            rightLegMaterial.color = new THREE.Color(getColor);
             console.log(getColor);
         });
 
