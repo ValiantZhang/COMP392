@@ -8,11 +8,17 @@ module objects {
         private _planeHeight: number;
         
         // PUBLIC INSTANCE VARIABLES
-        public rotationSpeed: number;
+        public rotationSpeedX: number;
+        public rotationSpeedY: number;
+        public rotationSpeedZ: number;
+        public color: string;
         public numberOfObjects: number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        constructor(rotationSpeed: number, planeWidth: number, planeHeight: number) {
-            this.rotationSpeed = rotationSpeed;
+        constructor(rotationSpeedX: number, rotationSpeedY: number, rotationSpeedZ: number,color: string, planeWidth: number, planeHeight: number) {
+            this.rotationSpeedX = rotationSpeedX;
+            this.rotationSpeedY = rotationSpeedY;
+            this.rotationSpeedZ = rotationSpeedZ;
+            this.color = color;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
@@ -20,6 +26,23 @@ module objects {
 
 
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
+        
+        /*public colorPicker(): void{
+            var Configuration=function(){
+                this.color = "#ffae23";
+            }
+            var conf = new Configuration();
+    
+            var controlador = gui.addColor( conf, 'color');
+            controlador.onChange( function( changeColor  )
+                {
+          //the return value by the chooser is like as: #ffff so
+          //remove the # and replace by 0x
+          changeColor=changeColor.replace( '#','0x' );
+          //create a Color
+          var changeColor = new THREE.Color( changeColor ) ;
+                });
+        }
         
         // Remove Cube Method +++++++++++++++++++++++++++++++++
         public removeCube(): void {
@@ -29,7 +52,7 @@ module objects {
                 scene.remove(lastObject);
                 this.numberOfObjects = scene.children.length;
             }
-        }
+        }*/
         
         // Add Cube Method
         public addCube(): void {

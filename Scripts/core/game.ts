@@ -32,6 +32,7 @@ var axes: AxisHelper;
 var cube: Mesh;
 var plane: Mesh;
 var blobbyBoy: gameObject;
+var changeColor = new Color(0x63F7CA);
 var sphere: Mesh;
 var sphereMaterial : MeshLambertMaterial;
 var cubeMaterial : MeshLambertMaterial;
@@ -41,6 +42,9 @@ var control: Control;
 var gui: GUI;
 var stats: Stats;
 var step: number = 0;
+var config = function(){this.color = "#000000";}
+var colorConfig = new config();
+var colorPicker;
 var shirtTexture = THREE.ImageUtils.loadTexture( "../../Assets/Textures/plaid.jpg" );
 
 function init() {
@@ -76,7 +80,7 @@ function init() {
      
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -94,14 +98,14 @@ function init() {
     blobbyBoy.add(sphere);
     //Add a Arms to the humanoid
     cube = new BoxGeometry(2, 2, 15);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 7;
     cube.position.z = 0;
     blobbyBoy.add(cube);cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
@@ -110,7 +114,7 @@ function init() {
     blobbyBoy.add(cube);
     
     blobbyBoy.add(cube);cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
@@ -119,7 +123,7 @@ function init() {
     blobbyBoy.add(cube);
     //Add a Sphere to the humanoid (Feet)
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
@@ -128,7 +132,7 @@ function init() {
     blobbyBoy.add(sphere);
     
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
@@ -152,12 +156,9 @@ function init() {
     
     // add controls
     gui = new GUI();
-    controlx = new Control(0.0, 60, 40);
-    controly = new Control(0.0, 60, 40);
-    controlz = new Control(0.0, 60, 40);
-    addControl(controlx);
-    addControl(controly);
-    addControl(controlz);
+    control = new Control(0.0, 0.0, 0.0);
+    addControl(control);
+
     console.log("Added Control to scene...");
     
     // Add framerate stats
@@ -178,7 +179,12 @@ function onResize(): void {
 
 
 function addControl(controlObject: Control): void {
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedY', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedZ', -0.5, 0.5);
+    
+    colorPicker = gui.addColor( colorConfig, 'color').onChange(function(getColor){changeColor =  new THREE.Color(getColor);});
+
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
     //gui.add(controlObject, 'outputObjects');
@@ -200,10 +206,9 @@ function gameLoop(): void {
     
     scene.traverse(function(threeObject:THREE.Object3D) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += controlx.rotationSpeed;
-            threeObject.rotation.y += controly.rotationSpeed;
-            threeObject.rotation.z += controlz.rotationSpeed;
-        }
+            threeObject.rotation.x += control.rotationSpeedX;
+            threeObject.rotation.y += control.rotationSpeedY;
+            threeObject.rotation.z += control.rotationSpeedZ;
     });
     
     // render using requestAnimationFrame

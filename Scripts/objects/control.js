@@ -4,22 +4,42 @@ var objects;
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        function Control(rotationSpeed, planeWidth, planeHeight) {
-            this.rotationSpeed = rotationSpeed;
+        function Control(rotationSpeedX, rotationSpeedY, rotationSpeedZ, color, planeWidth, planeHeight) {
+            this.rotationSpeedX = rotationSpeedX;
+            this.rotationSpeedY = rotationSpeedY;
+            this.rotationSpeedZ = rotationSpeedZ;
+            this.color = color;
             this.numberOfObjects = scene.children.length;
             this._planeWidth = planeWidth;
             this._planeHeight = planeHeight;
         }
         //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
+        /*public colorPicker(): void{
+            var Configuration=function(){
+                this.color = "#ffae23";
+            }
+            var conf = new Configuration();
+    
+            var controlador = gui.addColor( conf, 'color');
+            controlador.onChange( function( changeColor  )
+                {
+          //the return value by the chooser is like as: #ffff so
+          //remove the # and replace by 0x
+          changeColor=changeColor.replace( '#','0x' );
+          //create a Color
+          var changeColor = new THREE.Color( changeColor ) ;
+                });
+        }
+        
         // Remove Cube Method +++++++++++++++++++++++++++++++++
-        Control.prototype.removeCube = function () {
-            var allChildren = scene.children;
+        public removeCube(): void {
+            var allChildren: THREE.Object3D[] = scene.children;
             var lastObject = allChildren[allChildren.length - 1];
             if (lastObject instanceof THREE.Mesh) {
                 scene.remove(lastObject);
                 this.numberOfObjects = scene.children.length;
             }
-        };
+        }*/
         // Add Cube Method
         Control.prototype.addCube = function () {
             var cubeSize = Math.ceil((Math.random() * 3));

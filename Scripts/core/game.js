@@ -14,6 +14,7 @@ var SpotLight = THREE.SpotLight;
 var AmbientLight = THREE.AmbientLight;
 var Control = objects.Control;
 var GUI = dat.GUI;
+var Color = THREE.Color;
 //Custom Game Objects
 var gameObject = objects.gameObject;
 var scene;
@@ -23,6 +24,7 @@ var axes;
 var cube;
 var plane;
 var blobbyBoy;
+var changeColor = new Color(0x63F7CA);
 var sphere;
 var sphereMaterial;
 var cubeMaterial;
@@ -32,6 +34,9 @@ var control;
 var gui;
 var stats;
 var step = 0;
+var config = function () { this.color = "#000000"; };
+var colorConfig = new config();
+var colorPicker;
 var shirtTexture = THREE.ImageUtils.loadTexture("../../Assets/Textures/plaid.jpg");
 function init() {
     // Instantiate a new Scene object
@@ -53,7 +58,7 @@ function init() {
     blobbyBoy = new THREE.Object3D();
     //Add a Sphere to the humanoid (head)
     sphere = new SphereGeometry(4, 10, 20);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
@@ -71,7 +76,7 @@ function init() {
     blobbyBoy.add(sphere);
     //Add a Arms to the humanoid
     cube = new BoxGeometry(2, 2, 15);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
@@ -79,7 +84,7 @@ function init() {
     cube.position.z = 0;
     blobbyBoy.add(cube);
     cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
@@ -88,7 +93,7 @@ function init() {
     blobbyBoy.add(cube);
     blobbyBoy.add(cube);
     cube = new BoxGeometry(2, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x63F7CA });
+    cubeMaterial = new LambertMaterial({ color: changeColor });
     cube = new Mesh(cube, cubeMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
@@ -97,7 +102,7 @@ function init() {
     blobbyBoy.add(cube);
     //Add a Sphere to the humanoid (Feet)
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
@@ -105,7 +110,7 @@ function init() {
     sphere.position.z = 2;
     blobbyBoy.add(sphere);
     sphere = new SphereGeometry(4, 2, 2);
-    sphereMaterial = new LambertMaterial({ color: 0x63F7CA });
+    sphereMaterial = new LambertMaterial({ color: changeColor });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = -1;
@@ -125,12 +130,8 @@ function init() {
     console.log("Added a SpotLight Light to Scene");
     // add controls
     gui = new GUI();
-    controlx = new Control(0.0, 60, 40);
-    controly = new Control(0.0, 60, 40);
-    controlz = new Control(0.0, 60, 40);
-    addControl(controlx);
-    addControl(controly);
-    addControl(controlz);
+    control = new Control(0.0, 0.0, 0.0);
+    addControl(control);
     console.log("Added Control to scene...");
     // Add framerate stats
     addStatsObject();
@@ -145,7 +146,10 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedX', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedY', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeedZ', -0.5, 0.5);
+    colorPicker = gui.addColor(colorConfig, 'color').onChange(function (getColor) { changeColor = new THREE.Color(getColor); });
     //gui.add(controlObject, 'addCube');
     //gui.add(controlObject, 'removeCube');
     //gui.add(controlObject, 'outputObjects');
@@ -164,9 +168,9 @@ function gameLoop() {
     stats.update();
     scene.traverse(function (threeObject) {
         if (threeObject == blobbyBoy) {
-            threeObject.rotation.x += controlx.rotationSpeed;
-            threeObject.rotation.y += controly.rotationSpeed;
-            threeObject.rotation.z += controlz.rotationSpeed;
+            threeObject.rotation.x += control.rotationSpeedX;
+            threeObject.rotation.y += control.rotationSpeedY;
+            threeObject.rotation.z += control.rotationSpeedZ;
         }
     });
     // render using requestAnimationFrame
