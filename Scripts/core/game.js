@@ -34,6 +34,8 @@ var leftArmMaterial;
 var rightArmMaterial;
 var leftLegMaterial;
 var rightLegMaterial;
+var leftFootMaterial;
+var rightFootMaterial;
 var ambientLight;
 var spotLight;
 var control;
@@ -72,60 +74,89 @@ function init() {
     sphere = new Mesh(sphere, headMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
-    sphere.position.y = 10;
+    sphere.position.y = 20;
     sphere.position.z = 0;
     blobbyBoy.add(sphere);
     //Add a Sphere to the humanoid (body)
-    sphere = new SphereGeometry(4, 20, 20);
+    sphere = new SphereGeometry(5, 40, 40);
     sphereMaterial = new LambertMaterial({ map: shirtTexture });
     sphere = new Mesh(sphere, sphereMaterial);
     sphere.castShadow = true;
     sphere.position.x = 0;
-    sphere.position.y = 4;
+    sphere.position.y = 10;
     sphere.position.z = 0;
     blobbyBoy.add(sphere);
-    //Add a Arms to the humanoid
-    cube = new BoxGeometry(2, 2, 15);
+    //Add a neck to the humanoid
+    cube = new BoxGeometry(2, 3, 2);
     shoulderMaterial = new LambertMaterial({ color: blobbyBoyColor });
     cube = new Mesh(cube, shoulderMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
-    cube.position.y = 7;
+    cube.position.y = 15;
     cube.position.z = 0;
     blobbyBoy.add(cube);
+    //Add a Arms to the humanoid (shoulder)
+    cube = new BoxGeometry(2, 2, 16);
+    shoulderMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, shoulderMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 13;
+    cube.position.z = 0;
+    blobbyBoy.add(cube);
+    //Add a Arms to the humanoid (left)
     cube = new BoxGeometry(2, 5, 2);
     leftArmMaterial = new LambertMaterial({ color: blobbyBoyColor });
     cube = new Mesh(cube, leftArmMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
-    cube.position.y = 4;
-    cube.position.z = 6.5;
+    cube.position.y = 11;
+    cube.position.z = 7;
     blobbyBoy.add(cube);
+    //Add a Arms to the humanoid (right)
     cube = new BoxGeometry(2, 5, 2);
     rightArmMaterial = new LambertMaterial({ color: blobbyBoyColor });
     cube = new Mesh(cube, rightArmMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
-    cube.position.y = 4;
-    cube.position.z = -6.5;
+    cube.position.y = 15;
+    cube.position.z = -7;
     blobbyBoy.add(cube);
-    //Add a Sphere to the humanoid (Feet)
-    sphere = new SphereGeometry(4, 2, 2);
-    rightLegMaterial = new LambertMaterial({ color: blobbyBoyColor });
-    sphere = new Mesh(sphere, rightLegMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = -1;
-    sphere.position.y = 2;
-    sphere.position.z = 2;
-    blobbyBoy.add(sphere);
-    sphere = new SphereGeometry(4, 2, 2);
+    //Add a Legs to the humanoid (left)
+    cube = new BoxGeometry(2, 8, 2);
     leftLegMaterial = new LambertMaterial({ color: blobbyBoyColor });
-    sphere = new Mesh(sphere, leftLegMaterial);
-    sphere.castShadow = true;
-    sphere.position.x = -1;
-    sphere.position.y = 2;
-    sphere.position.z = -2;
-    blobbyBoy.add(sphere);
+    cube = new Mesh(cube, leftLegMaterial);
+    cube.castShadow = true;
+    cube.position.x = -5;
+    cube.position.y = 3;
+    cube.position.z = 2;
+    blobbyBoy.add(cube);
+    cube = new BoxGeometry(5, 2, 2);
+    leftFootMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, leftFootMaterial);
+    cube.castShadow = true;
+    cube.position.x = -2;
+    cube.position.y = 6;
+    cube.position.z = 2;
+    blobbyBoy.add(cube);
+    //Add a Legs to the humanoid (right)
+    cube = new BoxGeometry(2, 8, 2);
+    rightLegMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, rightLegMaterial);
+    cube.castShadow = true;
+    cube.position.x = 0;
+    cube.position.y = 3;
+    cube.position.z = -2;
+    blobbyBoy.add(cube);
+    cube = new BoxGeometry(5, 2, 2);
+    rightFootMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, rightFootMaterial);
+    cube.castShadow = true;
+    cube.position.x = 2;
+    cube.position.y = 1;
+    cube.position.z = -2;
+    blobbyBoy.add(cube);
+    //Add humanoid to scene
     scene.add(blobbyBoy);
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x0c0c0c);
@@ -133,7 +164,7 @@ function init() {
     console.log("Added an Ambient Light to Scene");
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
-    spotLight.position.set(0, 60, -10);
+    spotLight.position.set(-20, -30, 5);
     spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
@@ -166,6 +197,8 @@ function addControl(controlObject) {
         rightArmMaterial.color = new THREE.Color(getColor);
         leftLegMaterial.color = new THREE.Color(getColor);
         rightLegMaterial.color = new THREE.Color(getColor);
+        leftFootMaterial.color = new THREE.Color(getColor);
+        rightFootMaterial.color = new THREE.Color(getColor);
         console.log(getColor);
     });
     //gui.add(controlObject, 'addCube');
@@ -206,10 +239,10 @@ function setupRenderer() {
 }
 // Setup main camera for the scene
 function setupCamera() {
-    camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = -30;
-    camera.position.y = 40;
-    camera.position.z = 30;
+    camera.position.y = 2;
+    camera.position.z = 10;
     camera.lookAt(scene.position);
     console.log("Finished setting up Camera...");
 }
