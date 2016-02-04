@@ -185,7 +185,7 @@ function init() {
     cube = new Mesh(cube, rightFootMaterial);
     cube.castShadow = true;
     cube.position.x = 2;
-    cube.position.y = 1;
+    cube.position.y = 0;
     cube.position.z = -2;
     blobbyBoy.add(cube);
     
