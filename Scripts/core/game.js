@@ -29,6 +29,7 @@ var sphere;
 var sphereMaterial;
 var cubeMaterial;
 var headMaterial;
+var neckMaterial;
 var shoulderMaterial;
 var leftArmMaterial;
 var rightArmMaterial;
@@ -88,8 +89,8 @@ function init() {
     blobbyBoy.add(sphere);
     //Add a neck to the humanoid
     cube = new BoxGeometry(2, 3, 2);
-    shoulderMaterial = new LambertMaterial({ color: blobbyBoyColor });
-    cube = new Mesh(cube, shoulderMaterial);
+    neckMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, neckMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 15;
@@ -192,6 +193,7 @@ function addControl(controlObject) {
     colorPicker = gui.addColor(colorConfig, 'color').onChange(function (getColor) {
         //getColor=getColor.replace( '#','0x' );
         headMaterial.color = new THREE.Color(getColor);
+        neckMaterial.color = new THREE.Color(getColor);
         shoulderMaterial.color = new THREE.Color(getColor);
         leftArmMaterial.color = new THREE.Color(getColor);
         rightArmMaterial.color = new THREE.Color(getColor);

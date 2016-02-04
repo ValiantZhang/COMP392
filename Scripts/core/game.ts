@@ -37,6 +37,7 @@ var sphere: Mesh;
 var sphereMaterial : MeshLambertMaterial;
 var cubeMaterial : MeshLambertMaterial;
 var headMaterial : MeshLambertMaterial;
+var neckMaterial : MeshLambertMaterial;
 var shoulderMaterial : MeshLambertMaterial;
 var leftArmMaterial : MeshLambertMaterial;
 var rightArmMaterial : MeshLambertMaterial;
@@ -111,8 +112,8 @@ function init() {
     
     //Add a neck to the humanoid
     cube = new BoxGeometry(2, 3, 2);
-    shoulderMaterial = new LambertMaterial({ color: blobbyBoyColor });
-    cube = new Mesh(cube, shoulderMaterial);
+    neckMaterial = new LambertMaterial({ color: blobbyBoyColor });
+    cube = new Mesh(cube, neckMaterial);
     cube.castShadow = true;
     cube.position.x = 0;
     cube.position.y = 15;
@@ -236,6 +237,7 @@ function addControl(controlObject: Control): void {
         function(getColor){
             //getColor=getColor.replace( '#','0x' );
             headMaterial.color =  new THREE.Color(getColor);
+            neckMaterial.color = new THREE.Color(getColor);
             shoulderMaterial.color = new THREE.Color(getColor);
             leftArmMaterial.color =  new THREE.Color(getColor);
             rightArmMaterial.color = new THREE.Color(getColor);
