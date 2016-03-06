@@ -1,13 +1,13 @@
 {
-  "name": "comp392lesson02-part2",
+  "name": "COMP392Assignment1",
   "authors": [
-    "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>"
+    "Jacky Zhang"
   ],
-  "description": "COMP392Lesson02-Part2 for Advanced Graphics",
+  "description": "COMP392Assignment1",
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "http://github.com/CentennialCollege/COMP392-Lesson01-Part2",
+  "homepage": "http://jzhancomp392assignment1.azurewebsites.net/",
   "ignore": [
     "**/.*",
     "node_modules",
