@@ -1,3 +1,3 @@
-# Lesson02 - Part 2
+#Comp392assignment1
 
-Lesson02 - Part 2 for COMP392 - Advanced Graphics @ Centennial College
+Assignment 1 for comp392 - Advanced Graphics @ Centennial College
